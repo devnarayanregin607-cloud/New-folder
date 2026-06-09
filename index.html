@@ -13,6 +13,13 @@
       <h1>Devnarayan KR</h1>
       <p class="tagline">Coding my way to innovation, one problem at a time.</p>
       <p class="intro">Devnarayan KR is a second-year Computer Science student at TOC H Institute of Science and Technology. He is passionate about technology, programming, and continuously expanding his knowledge in the field of computer science. He is eager to develop innovative solutions and build a successful career in the tech industry.</p>
+      <div class="photo-card">
+        <img id="profilePhoto" src="https://via.placeholder.com/260x260?text=Your+Photo" alt="Photo placeholder" />
+        <div class="photo-text">
+          <p>Want to add a photo? Choose a file from your device below to preview it here.</p>
+          <input type="file" id="photoInput" accept="image/*" />
+        </div>
+      </div>
     </header>
 
     <section class="section">
@@ -32,5 +39,19 @@
       <p>Email: <a href="mailto:devnarayanregin@gmail.com">devnarayanregin@gmail.com</a></p>
     </section>
   </div>
+  <script>
+    const photoInput = document.getElementById('photoInput');
+    const profilePhoto = document.getElementById('profilePhoto');
+
+    photoInput.addEventListener('change', event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        profilePhoto.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  </script>
 </body>
 </html>
